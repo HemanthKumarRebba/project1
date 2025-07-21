@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Real Estate</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0A2342;
+            --secondary: #F3B61F;
+            --accent: #4FB477;
+            --light: #F5F5F5;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--primary);
+        }
+        
+        /* Navbar */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            color: var(--primary);
+            font-weight: 500;
+            margin: 0 10px;
+        }
+        
+        .nav-link.active {
+            color: var(--secondary);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            height: 70vh;
+            min-height: 500px;
+            background: 
+                linear-gradient(rgba(10, 35, 66, 0.7), rgba(10, 35, 66, 0.5)),
+                url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        
+        /* Property Cards */
+        .property-card {
+            transition: all 0.3s ease;
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .property-card .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 0.8rem;
+        }
+        
+        .sale-badge {
+            background-color: var(--primary);
+        }
+        
+        .rent-badge {
+            background-color: var(--accent);
+        }
+        
+        /* Section Titles */
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        .testimonial-card {
+            border-left: 3px solid var(--secondary);
+        }
+        
+        /* Interactive Elements */
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Custom Utilities */
+        .cursor-pointer { cursor: pointer; }
+        .z-10 { z-index: 10; }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">LUXE<span class="text-secondary">ESTATES</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Buy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Rent</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Agents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <button class="btn btn-outline-primary me-2">Login</button>
+                    <button class="btn btn-primary">Register</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Search -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="display-4 fw-bold mb-4">Find Your Perfect Property</h1>
+                    <p class="lead mb-5">Discover thousands of luxury homes and apartments for sale and rent</p>
+                    
+                    <!-- Search Bar -->
+                    <div class="bg-white p-4 rounded-3 shadow-lg">
+                        <form class="row g-2">
+                            <div class="col-md-5">
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white"><i class="fas fa-map-marker-alt text-muted"></i></span>
+                                    <input type="text" class="form-control" placeholder="Enter city, neighborhood, or address">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select">
+                                    <option selected>Property Type</option>
+                                    <option>House</option>
+                                    <option>Apartment</option>
+                                    <option>Villa</option>
+                                    <option>Condo</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <select class="form-select">
+                                    <option selected>Price</option>
+                                    <option>Under $500k</option>
+                                    <option>$500k - $1M</option>
+                                    <option>$1M - $2M</option>
+                                    <option>$2M+</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-primary w-100 py-2">
+                                    <i class="fas fa-search me-2"></i> Search
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties for Sale -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">Properties For Sale</h2>
+            
+            <div class="row">
+                <!-- Property 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="property-card card h-100">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Modern Mansion">
+                            <span class="badge sale-badge">For Sale</span>
+                            <button class="btn btn-sm btn-secondary position-absolute bottom-0 end-0 m-3 rounded-circle">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Modern Mansion</h5>
+                            <p class="card-text text-muted"><i class="fas fa-map-marker-alt text-accent"></i> Beverly Hills, CA</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="me-3"><i class="fas fa-bed text-secondary"></i> 5 Beds</span>
+                                    <span><i class="fas fa-bath text-secondary"></i> 4.5 Baths</span>
+                                </div>
+                                <h5 class="text-primary mb-0">$3,250,000</h5>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0">
+                            <div class="d-grid">
+                                <button class="btn btn-outline-primary">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="property-card card h-100">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Luxury Penthouse">
+                            <span class="badge sale-badge">For Sale</span>
+                            <button class="btn btn-sm btn-secondary position-absolute bottom-0 end-0 m-3 rounded-circle">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Luxury Penthouse</h5>
+                            <p class="card-text text-muted"><i class="fas fa-map-marker-alt text-accent"></i> Manhattan, NY</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="me-3"><i class="fas fa-bed text-secondary"></i> 3 Beds</span>
+                                    <span><i class="fas fa-bath text-secondary"></i> 3 Baths</span>
+                                </div>
+                                <h5 class="text-primary mb-0">$2,750,000</h5>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0">
+                            <div class="d-grid">
+                                <button class="btn btn-outline-primary">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="property-card card h-100">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Waterfront Villa">
+                            <span class="badge sale-badge">For Sale</span>
+                            <button class="btn btn-sm btn-secondary position-absolute bottom-0 end-0 m-3 rounded-circle">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Waterfront Villa</h5>
+                            <p class="card-text text-muted"><i class="fas fa-map-marker-alt text-accent"></i> Miami, FL</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="me-3"><i class="fas fa-bed text-secondary"></i> 6 Beds</span>
+                                    <span><i class="fas fa-bath text-secondary"></i> 5 Baths</span>
+                                </div>
+                                <h5 class="text-primary mb-0">$5,500,000</h5>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0">
+                            <div class="d-grid">
+                                <button class="btn btn-outline-primary">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-primary btn-lg px-4">View All Properties for Sale</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties for Rent -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Properties For Rent</h2>
+            
+            <div class="row">
+                <!-- Property 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="property-card card h-100">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Modern Apartment">
+                            <span class="badge rent-badge">For Rent</span>
+                            <button class="btn btn-sm btn-secondary position-absolute bottom-0 end-0 m-3 rounded-circle">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Modern Apartment</h5>
+                            <p class="card-text text-muted"><i class="fas fa-map-marker-alt text-accent"></i> Chicago, IL</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="me-3"><i class="fas fa-bed text-secondary"></i> 2 Beds</span>
+                                    <span><i class="fas fa-bath text-secondary"></i> 2 Baths</span>
+                                </div>
+                                <h5 class="text-primary mb-0">$3,200/mo</h5>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0">
+                            <div class="d-grid">
+                                <button class="btn btn-outline-primary">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="property-card card h-100">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Downtown Loft">
+                            <span class="badge rent-badge">For Rent</span>
+                            <button class="btn btn-sm btn-secondary position-absolute bottom-0 end-0 m-3 rounded-circle">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Downtown Loft</h5>
+                            <p class="card-text text-muted"><i class="fas fa-map-marker-alt text-accent"></i> Austin, TX</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="me-3"><i class="fas fa-bed text-secondary"></i> 1 Bed</span>
+                                    <span><i class="fas fa-bath text-secondary"></i> 1 Bath</span>
+                                </div>
+                                <h5 class="text-primary mb-0">$2,100/mo</h5>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0">
+                            <div class="d-grid">
+                                <button class="btn btn-outline-primary">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="property-card card h-100">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Luxury Condo">
+                            <span class="badge rent-badge">For Rent</span>
+                            <button class="btn btn-sm btn-secondary position-absolute bottom-0 end-0 m-3 rounded-circle">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Luxury Condo</h5>
+                            <p class="card-text text-muted"><i class="fas fa-map-marker-alt text-accent"></i> San Diego, CA</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="me-3"><i class="fas fa-bed text-secondary"></i> 3 Beds</span>
+                                    <span><i class="fas fa-bath text-secondary"></i> 2.5 Baths</span>
+                                </div>
+                                <h5 class="text-primary mb-0">$4,500/mo</h5>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0">
+                            <div class="d-grid">
+                                <button class="btn btn-outline-primary">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-primary btn-lg px-4">View All Properties for Rent</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+        
+        // Property card hover effect
+        document.querySelectorAll('.property-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+                this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.2)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            });
+        });
+    </script>
+    <section class="py-5 bg-white">
+      <div class="container">
+          <div class="row align-items-center">
+              <div class="col-lg-6 mb-4 mb-lg-0">
+                  <h2 class="display-5 fw-bold mb-4">Neighborhood Explorer</h2>
+                  <p class="lead">Discover the perfect location with our interactive neighborhood explorer.</p>
+                  <div class="mt-4">
+                      <div class="d-flex mb-3">
+                          <div class="me-4">
+                              <h4 class="text-primary">1,200+</h4>
+                              <p class="text-muted mb-0">Properties</p>
+                          </div>
+                          <div class="me-4">
+                              <h4 class="text-primary">50+</h4>
+                              <p class="text-muted mb-0">Neighborhoods</p>
+                          </div>
+                          <div>
+                              <h4 class="text-primary">24/7</h4>
+                              <p class="text-muted mb-0">Support</p>
+                          </div>
+                      </div>
+                      <button class="btn btn-primary mt-2">Explore Map</button>
+                  </div>
+              </div>
+              <div class="col-lg-6">
+                  <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-lg">
+                      <!-- Placeholder for map - in production you would embed Google Maps -->
+                      <img src="https://maps.googleapis.com/maps/api/staticmap?center=40.7128,-74.0060&zoom=12&size=800x450&maptype=roadmap&key=YOUR_API_KEY" alt="Map" class="img-fluid">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-5 bg-light">
+      <div class="container">
+          <div class="text-center mb-5">
+              <h2 class="display-5 fw-bold">What Our Clients Say</h2>
+              <p class="text-muted">Trusted by thousands of happy customers</p>
+          </div>
+          
+          <div class="row g-4">
+              <div class="col-md-4">
+                  <div class="testimonial-card card h-100 border-0 shadow-sm p-4">
+                      <div class="d-flex mb-3">
+                          <div class="me-3">
+                              <img src="https://randomuser.me/api/portraits/women/45.jpg" class="rounded-circle" width="50" height="50" alt="Client">
+                          </div>
+                          <div>
+                              <h5 class="mb-0">Sarah Johnson</h5>
+                              <div class="text-warning">
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                              </div>
+                          </div>
+                      </div>
+                      <p class="card-text">"Found my dream home in just two weeks! The team was incredibly helpful throughout the entire process."</p>
+                  </div>
+              </div>
+              
+              <div class="col-md-4">
+                  <div class="testimonial-card card h-100 border-0 shadow-sm p-4">
+                      <div class="d-flex mb-3">
+                          <div class="me-3">
+                              <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle" width="50" height="50" alt="Client">
+                          </div>
+                          <div>
+                              <h5 class="mb-0">Michael Chen</h5>
+                              <div class="text-warning">
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                              </div>
+                          </div>
+                      </div>
+                      <p class="card-text">"The virtual tour feature saved me so much time. I was able to narrow down properties before visiting."</p>
+                  </div>
+              </div>
+              
+              <div class="col-md-4">
+                  <div class="testimonial-card card h-100 border-0 shadow-sm p-4">
+                      <div class="d-flex mb-3">
+                          <div class="me-3">
+                              <img src="https://randomuser.me/api/portraits/women/68.jpg" class="rounded-circle" width="50" height="50" alt="Client">
+                          </div>
+                          <div>
+                              <h5 class="mb-0">Emily Rodriguez</h5>
+                              <div class="text-warning">
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star-half-alt"></i>
+                              </div>
+                          </div>
+                      </div>
+                      <p class="card-text">"Excellent service from start to finish. They understood exactly what I was looking for and delivered."</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-5 bg-primary text-white">
+      <div class="container">
+          <div class="row align-items-center">
+              <div class="col-lg-8 mb-4 mb-lg-0">
+                  <h2 class="display-5 fw-bold mb-3">Ready to Find Your Dream Home?</h2>
+                  <p class="lead mb-0">Join thousands of satisfied clients who found their perfect property with us.</p>
+              </div>
+              <div class="col-lg-4 text-lg-end">
+                  <a href="#" class="btn btn-light btn-lg px-4 me-3">Browse Listings</a>
+                  <a href="#" class="btn btn-outline-light btn-lg px-4">Contact Agent</a>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-5">
+      <div class="container">
+          <div class="row g-4">
+              <div class="col-lg-4">
+                  <h4 class="mb-4">Luxury Estates</h4>
+                  <p>Premium real estate services for discerning clients worldwide.</p>
+                  <div class="social-icons mt-4">
+                      <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                      <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                      <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                      <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                  </div>
+              </div>
+              <div class="col-lg-2 col-md-4">
+                  <h5 class="mb-4">Quick Links</h5>
+                  <ul class="list-unstyled">
+                      <li class="mb-2"><a href="#" class="text-white text-decoration-none">Home</a></li>
+                      <li class="mb-2"><a href="#" class="text-white text-decoration-none">Properties</a></li>
+                      <li class="mb-2"><a href="#" class="text-white text-decoration-none">Agents</a></li>
+                      <li class="mb-2"><a href="#" class="text-white text-decoration-none">About Us</a></li>
+                      <li><a href="#" class="text-white text-decoration-none">Contact</a></li>
+                  </ul>
+              </div>
+              <div class="col-lg-3 col-md-4">
+                  <h5 class="mb-4">Contact Us</h5>
+                  <ul class="list-unstyled">
+                      <li class="mb-2"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> 123 Luxury Ave, Beverly Hills</li>
+                      <li class="mb-2"><i class="fas fa-phone me-2 text-secondary"></i> (555) 123-4567</li>
+                      <li><i class="fas fa-envelope me-2 text-secondary"></i> info@luxuryestates.com</li>
+                  </ul>
+              </div>
+              <div class="col-lg-3 col-md-4">
+                  <h5 class="mb-4">Newsletter</h5>
+                  <p>Subscribe to get updates on new properties.</p>
+                  <form class="mt-3">
+                      <div class="input-group mb-3">
+                          <input type="email" class="form-control" placeholder="Your Email">
+                          <button class="btn btn-secondary" type="button">Subscribe</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+          <hr class="my-4 bg-secondary">
+          <div class="row">
+              <div class="col-md-6 text-center text-md-start">
+                  <p class="mb-0">&copy; 2023 Luxury Estates. All rights reserved.</p>
+              </div>
+              <div class="col-md-6 text-center text-md-end">
+                  <p class="mb-0">Designed with <i class="fas fa-heart text-danger"></i> for premium clients</p>
+              </div>
+          </div>
+      </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+      // Initialize tooltips
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl)
+      });
+      
+      // Property card hover effect
+      document.querySelectorAll('.property-card').forEach(card => {
+          card.addEventListener('mouseenter', function() {
+              this.style.transform = 'translateY(-10px)';
+              this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.2)';
+          });
+          
+          card.addEventListener('mouseleave', function() {
+              this.style.transform = '';
+              this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+          });
+      });
+      // app.js - Main JavaScript for Real Estate Website
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize components
+    initNavigation();
+    initPropertyListings();
+    initAuthForms();
+    initFavoriteButtons();
+});
+
+// 1. NAVIGATION SYSTEM
+function initNavigation() {
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Active link highlighting
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // Mobile menu toggle
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+    if (navbarToggler && navbarCollapse) {
+        navbarToggler.addEventListener('click', function() {
+            navbarCollapse.classList.toggle('show');
+        });
+    }
+}
+
+// 2. PROPERTY LISTINGS SYSTEM
+function initPropertyListings() {
+    // Sample property data (in a real app, this would come from an API)
+    const properties = {
+        forSale: [
+            {
+                id: 1,
+                title: "Modern Mansion",
+                location: "Beverly Hills, CA",
+                price: 3250000,
+                beds: 5,
+                baths: 4.5,
+                sqft: 4500,
+                type: "House",
+                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+                featured: true
+            },
+            // Add more properties...
+        ],
+        forRent: [
+            {
+                id: 101,
+                title: "Modern Apartment",
+                location: "Chicago, IL",
+                price: 3200,
+                beds: 2,
+                baths: 2,
+                sqft: 1200,
+                type: "Apartment",
+                image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+                featured: true
+            },
+            // Add more properties...
+        ]
+    };
+
+    // Render property listings
+    renderPropertySection('for-sale-container', properties.forSale, 'sale');
+    renderPropertySection('for-rent-container', properties.forRent, 'rent');
+
+    // Filter properties
+    const searchForm = document.getElementById('property-search-form');
+    if (searchForm) {
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const filters = {
+                type: formData.get('property-type'),
+                location: formData.get('location'),
+                price: formData.get('price-range'),
+                beds: formData.get('bedrooms')
+            };
+            filterProperties(filters);
+        });
+    }
+}
+
+function renderPropertySection(containerId, properties, listingType) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.innerHTML = properties.map(property => `
+        <div class="col-md-6 col-lg-4">
+            <div class="property-card card h-100" data-id="${property.id}" data-type="${listingType}">
+                <div class="position-relative">
+                    <img src="${property.image}" class="card-img-top" alt="${property.title}">
+                    <span class="badge ${listingType === 'sale' ? 'sale-badge' : 'rent-badge'}">
+                        ${listingType === 'sale' ? 'For Sale' : 'For Rent'}
+                    </span>
+                    <button class="btn btn-sm btn-secondary position-absolute bottom-0 end-0 m-3 rounded-circle favorite-btn">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">${property.title}</h5>
+                    <p class="card-text text-muted">
+                        <i class="fas fa-map-marker-alt text-accent"></i> ${property.location}
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="me-3"><i class="fas fa-bed text-secondary"></i> ${property.beds} Beds</span>
+                            <span><i class="fas fa-bath text-secondary"></i> ${property.baths} Baths</span>
+                        </div>
+                        <h5 class="text-primary mb-0">
+                            ${listingType === 'sale' ? '$' + property.price.toLocaleString() : '$' + property.price + '/mo'}
+                        </h5>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <div class="d-grid">
+                        <button class="btn btn-outline-primary view-details-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function filterProperties(filters) {
+    // In a real app, this would call an API with the filters
+    console.log('Applying filters:', filters);
+    // You would then re-render the filtered properties
+}
+
+// 3. AUTHENTICATION SYSTEM
+function initAuthForms() {
+    // Login Form
+    const loginForm = document.getElementById('login-form');
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[name="email"]').value;
+            const password = this.querySelector('input[name="password"]').value;
+            handleLogin(email, password);
+        });
+    }
+
+    // Registration Form
+    const registerForm = document.getElementById('register-form');
+    if (registerForm) {
+        registerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const userData = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                password: formData.get('password'),
+                phone: formData.get('phone')
+            };
+            handleRegistration(userData);
+        });
+    }
+
+    // Toggle between login/register forms
+    const authToggleLinks = document.querySelectorAll('.auth-toggle');
+    authToggleLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelectorAll('.auth-form').forEach(form => {
+                form.classList.toggle('d-none');
+            });
+        });
+    });
+}
+
+function handleLogin(email, password) {
+    // In a real app, this would call your authentication API
+    console.log('Login attempt with:', email, password);
+    
+    // Simulate API call
+    setTimeout(() => {
+        // On success:
+        // localStorage.setItem('authToken', 'sample-token');
+        // window.location.href = 'dashboard.html';
+        
+        // For demo, just show alert
+        alert('Login functionality would connect to your backend in a real app');
+    }, 500);
+}
+
+function handleRegistration(userData) {
+    // In a real app, this would call your registration API
+    console.log('Registration with:', userData);
+    
+    // Simulate API call
+    setTimeout(() => {
+        alert('Registration would be handled by your backend in a real app');
+    }, 500);
+}
+
+// 4. FAVORITE PROPERTIES SYSTEM
+function initFavoriteButtons() {
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.favorite-btn')) {
+            const button = e.target.closest('.favorite-btn');
+            const propertyCard = button.closest('.property-card');
+            const propertyId = propertyCard.dataset.id;
+            const propertyType = propertyCard.dataset.type;
+            
+            button.classList.toggle('active');
+            toggleFavorite(propertyId, propertyType);
+        }
+        
+        if (e.target.closest('.view-details-btn')) {
+            const button = e.target.closest('.view-details-btn');
+            const propertyCard = button.closest('.property-card');
+            const propertyId = propertyCard.dataset.id;
+            viewPropertyDetails(propertyId);
+        }
+    });
+}
+
+function toggleFavorite(propertyId, propertyType) {
+    // In a real app, this would call your API to save favorites for the user
+    console.log(`Toggling favorite for ${propertyType} property ID:`, propertyId);
+    
+    // For demo, just toggle the button style
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '{}');
+    const key = `${propertyType}-${propertyId}`;
+    
+    if (favorites[key]) {
+        delete favorites[key];
+    } else {
+        favorites[key] = true;
+    }
+    
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+}
+
+function viewPropertyDetails(propertyId) {
+    // In a real app, this would redirect to a property details page
+    console.log('Viewing details for property ID:', propertyId);
+    alert(`In a real app, this would show details for property ${propertyId}`);
+}
+
+// 5. PAGE ROUTING (for SPA functionality)
+function loadPage(page) {
+    // In a real SPA, this would use a framework like React, Vue, or a router library
+    // This is a simplified version for demonstration
+    
+    const mainContent = document.getElementById('main-content');
+    if (!mainContent) return;
+    
+    // Simple page routing
+    switch(page) {
+        case 'home':
+            mainContent.innerHTML = `
+                <!-- Hero section and featured properties would be here -->
+                <section id="featured-properties"></section>
+            `;
+            initPropertyListings();
+            break;
+            
+        case 'buy':
+            mainContent.innerHTML = `
+                <section class="py-5 bg-light">
+                    <div class="container">
+                        <h2 class="text-center section-title">Properties For Sale</h2>
+                        <div class="row" id="for-sale-container"></div>
+                    </div>
+                </section>
+            `;
+            initPropertyListings();
+            break;
+            
+        case 'rent':
+            mainContent.innerHTML = `
+                <section class="py-5">
+                    <div class="container">
+                        <h2 class="text-center section-title">Properties For Rent</h2>
+                        <div class="row" id="for-rent-container"></div>
+                    </div>
+                </section>
+            `;
+            initPropertyListings();
+            break;
+            
+        case 'login':
+            mainContent.innerHTML = `
+                <section class="py-5">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="card shadow-sm">
+                                    <div class="card-body p-5">
+                                        <h2 class="text-center mb-4">Login</h2>
+                                        <form id="login-form">
+                                            <div class="mb-3">
+                                                <label for="login-email" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="login-email" name="email" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="login-password" class="form-label">Password</label>
+                                                <input type="password" class="form-control" id="login-password" name="password" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                                        </form>
+                                        <div class="text-center mt-3">
+                                            <p>Don't have an account? <a href="#" class="auth-toggle">Register</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+            initAuthForms();
+            break;
+            
+        case 'register':
+            mainContent.innerHTML = `
+                <section class="py-5">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="card shadow-sm">
+                                    <div class="card-body p-5">
+                                        <h2 class="text-center mb-4">Register</h2>
+                                        <form id="register-form">
+                                            <div class="mb-3">
+                                                <label for="register-name" class="form-label">Full Name</label>
+                                                <input type="text" class="form-control" id="register-name" name="name" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="register-email" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="register-email" name="email" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="register-password" class="form-label">Password</label>
+                                                <input type="password" class="form-control" id="register-password" name="password" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="register-phone" class="form-label">Phone Number</label>
+                                                <input type="tel" class="form-control" id="register-phone" name="phone">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary w-100">Register</button>
+                                        </form>
+                                        <div class="text-center mt-3">
+                                            <p>Already have an account? <a href="#" class="auth-toggle">Login</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+            initAuthForms();
+            break;
+    }
+}
+
+// Initialize the current page
+const currentPage = window.location.hash.substring(1) || 'home';
+loadPage(currentPage);
+
+// Handle hash changes for SPA navigation
+window.addEventListener('hashchange', function() {
+    const newPage = window.location.hash.substring(1) || 'home';
+    loadPage(newPage);
+});
+  </script>
+</body>
+</html>
